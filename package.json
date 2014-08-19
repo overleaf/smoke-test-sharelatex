@@ -1,7 +1,11 @@
 {
   "name": "smoke-test-sharelatex",
   "description": "Runs smoke tests on an HTTP endpoint",
-  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sharelatex/smoke-test-sharelatex.git"
+  },
+  "version": "1.0.0",
   "dependencies": {
     "mocha": "~1.17.0"
   },
