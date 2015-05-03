@@ -18,6 +18,12 @@
         });
         mocha.addFile(smokeTestPath);
         return mocha.run(function() {
+          var idx, parent, smokeTestModule;
+          smokeTestModule = require.cache[smokeTestPath];
+          parent = smokeTestModule.parent;
+          while ((idx = parent.children.indexOf(smokeTestModule)) !== -1) {
+            parent.children.splice(idx, 1);
+          }
           return delete require.cache[smokeTestPath];
         });
       };
