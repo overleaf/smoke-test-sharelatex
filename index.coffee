@@ -11,6 +11,8 @@ module.exports =
 				# so it can be garbage collected.  The only reference should
 				# be in its parent, when it is loaded by mocha.addFile.
 				smokeTestModule = require.cache[smokeTestPath]
+				# handle one smoke test removing module while another is running
+				return if not smokeTestModule?
 				parent = smokeTestModule.parent
 				while (idx = parent.children.indexOf(smokeTestModule)) != -1
 					parent.children.splice(idx, 1)
