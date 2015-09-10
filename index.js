@@ -20,6 +20,9 @@
         return mocha.run(function() {
           var idx, parent, smokeTestModule;
           smokeTestModule = require.cache[smokeTestPath];
+          if (smokeTestModule == null) {
+            return;
+          }
           parent = smokeTestModule.parent;
           while ((idx = parent.children.indexOf(smokeTestModule)) !== -1) {
             parent.children.splice(idx, 1);
